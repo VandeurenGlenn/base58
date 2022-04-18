@@ -1,0 +1,30 @@
+{
+  "name": "@vandeurenglenn/base58",
+  "version": "1.0.0",
+  "description": "Base58",
+  "keywords": [
+    "base",
+    "58",
+    "base58",
+    "bs58"
+  ],
+  "license": "MIT",
+  "repository": "git://github.com/vandeurenglenn/base58.git",
+  "homepage": "https://github.com/vandeurenglenn/base58",
+  "bugs": {
+    "url": "https://github.com/vandeurenglenn/base58/issues"
+  },
+  "author": "Vanduren Glenn <vandeurenglenn@gmail.com>",
+  "main": "./dist/base58.js",
+  "module": "./src/base58.js",
+  "scripts": {
+    "c": "rollup -c",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@vandeurenglenn/base-x": "^1.0.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.70.2"
+  }
+}
