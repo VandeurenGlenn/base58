@@ -1,4 +1,4 @@
-const base58 = require('./dist/base58');
+import base58 from './dist/base58.js'
 
 const uint8Array = new TextEncoder().encode('hi')
 
