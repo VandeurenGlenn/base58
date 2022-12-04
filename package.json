@@ -14,9 +14,10 @@
   "bugs": {
     "url": "https://github.com/vandeurenglenn/base58/issues"
   },
-  "author": "Vanduren Glenn <vandeurenglenn@gmail.com>",
+  "author": "Vandeuren Glenn <vandeurenglenn@gmail.com>",
   "main": "./dist/base58.js",
   "type": "module",
+  "types": "types/base58.d.ts",
   "scripts": {
     "build": "rollup -c",
     "test": "node test.js"
