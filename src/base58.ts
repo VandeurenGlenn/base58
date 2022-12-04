@@ -5,7 +5,7 @@ const base58 = baseX(ALPHABET)
 
 export const encode = base58.encode
 export const decode = base58.decode
-export const isBase58 = (string: base58): boolean => {
+export const isBase58 = (string: base58String): boolean => {
   try {
     decode(string)
     return true
