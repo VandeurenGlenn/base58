@@ -4,8 +4,15 @@
  */
 declare type base58String = string
 
+declare module base58 {
+  export function encode(uint8Array: Uint8Array): base58String
+  export function decode(uint8Array: base58String): Uint8Array
+  export function isBase58(string: base58String): boolean
+}
+
 declare module '@vandeurenglenn/base58' {
-  export function encode(source: Uint8Array): base58String
-  export function decode(source: base58String): Uint8Array
+  export default base58
+  export function encode(uint8Array: Uint8Array): base58String
+  export function decode(uint8Array: base58String): Uint8Array
   export function isBase58(string: base58String): boolean
 }
