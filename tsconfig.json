@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "outDir": "./",
+    "rootDir": "./src",
+    "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "declaration": true
