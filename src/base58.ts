@@ -5,6 +5,30 @@ const ALPHABET_HEX = "0123456789ABCDEFGHJKLMNPQRSTUVabcdefghijklmnopqrstuv";
 
 const base58 = baseX(ALPHABET);
 const base58Hex = baseX(ALPHABET_HEX);
+const ALPHABET_MAP = new Uint8Array(128);
+const ALPHABET_HEX_MAP = new Uint8Array(128);
+
+for (const character of ALPHABET) {
+  ALPHABET_MAP[character.charCodeAt(0)] = 1;
+}
+
+for (const character of ALPHABET_HEX) {
+  ALPHABET_HEX_MAP[character.charCodeAt(0)] = 1;
+}
+
+const isInAlphabet = (value: string, alphabetMap: Uint8Array): boolean => {
+  if (typeof value !== "string") {
+    return false;
+  }
+
+  for (let i = 0; i < value.length; i++) {
+    if (alphabetMap[value.charCodeAt(i)] !== 1) {
+      return false;
+    }
+  }
+
+  return true;
+};
 
 export const encode = base58.encode;
 export const decode = base58.decode;
@@ -28,38 +52,24 @@ export type base58HexString = string;
  */
 export type base58Type = "base58" | "base58Hex" | undefined;
 
-export const isBase58 = (string: base58String): boolean => {
-  try {
-    decode(string);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
+export const isBase58 = (string: base58String): boolean =>
+  isInAlphabet(string, ALPHABET_MAP);
 
-export const isBase58Hex = (string: base58HexString): boolean => {
-  try {
-    decodeHex(string);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
+export const isBase58Hex = (string: base58HexString): boolean =>
+  isInAlphabet(string, ALPHABET_HEX_MAP);
 
 export const whatType = (
   string: base58String | base58HexString
 ): base58Type => {
-  try {
-    decode(string);
+  if (isInAlphabet(string, ALPHABET_MAP)) {
     return "base58";
-  } catch (e) {
-    try {
-      decodeHex(string);
-      return "base58Hex";
-    } catch {
-      return;
-    }
   }
+
+  if (isInAlphabet(string, ALPHABET_HEX_MAP)) {
+    return "base58Hex";
+  }
+
+  return;
 };
 
 export default {
